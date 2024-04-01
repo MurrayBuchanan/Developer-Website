@@ -3,7 +3,9 @@
     <head>
         <title>Murray Buchanan</title>
         <link rel="icon" href="assets/favicon.ico" type="image/ico" />
-        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="Style/style.css" />
+		<link rel="stylesheet" type="text/css" href="Style/timeline.css" />
+		<link rel="stylesheet" type="text/css" href="Style/multi-section.css" />
 
         <meta charset="utf-8" />
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width, height=device-height" />
@@ -27,66 +29,179 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-		<script>
-			window.addEventListener('scroll', function() {
-				var scrollSection = document.querySelector('.scroll-section');
-				if (window.scrollY > 0) {
-					scrollSection.style.opacity = '0'; // Fade out
-				} else {
-					scrollSection.style.opacity = '1'; // Fade in
-				}
-			});
-        </script>
-		
+<script>
 
+
+window.addEventListener('scroll', function() {
+  var scrollSection = document.querySelector('.scroll-section');
+  if (window.scrollY > 0) {
+    scrollSection.style.opacity = '0'; // Fade out
+  } else {
+    scrollSection.style.opacity = '1'; // Fade in
+  }
+});
+
+// Select all the images within .link-section
+const images = document.querySelectorAll('.link-section img');
+
+images.forEach(img => {
+// When you mouse over the image
+img.addEventListener('mouseover', () => {
+img.style.opacity = '1'; // Make the image fully opaque
+img.style.transform = 'scale(1.1)'; // Scale the image up
+});
+
+// When the mouse leaves the image
+img.addEventListener('mouseout', () => {
+img.style.opacity = '0.8'; // Return to the initial opacity
+img.style.color="#fff";
+img.style.transform = 'scale(1)'; // Return to the original size
+});
+});
+
+document.getElementById('checkbox').addEventListener('change', function() {
+    if(this.checked) {
+        document.body.classList.add("dark-mode");
+        document.body.classList.remove("light-mode");
+    } else {
+        document.body.classList.add("light-mode");
+        document.body.classList.remove("dark-mode");
+    }
+});
+
+function displayInfo1() {
+  document.getElementById("chibb-desc").style.display="block" ;
+  document.getElementById("set-piece-desc").style.display="none" ;
+  document.getElementById("pie-lot-desc").style.display="none" 
+  
+  document.getElementById("chibb-title").style.color="#fff" ;
+  document.getElementById("set-piece-title").style.color="lightslategrey" ;
+  document.getElementById("pie-lot-title").style.color="lightslategrey";}
+
+function displayInfo2() {
+  document.getElementById("chibb-desc").style.display="none" ;
+  document.getElementById("set-piece-desc").style.display="block" ;
+  document.getElementById("pie-lot-desc").style.display="none" 
+
+  document.getElementById("chibb-title").style.color="lightslategrey" ;
+  document.getElementById("set-piece-title").style.color="#fff" ;
+  document.getElementById("pie-lot-title").style.color="lightslategrey";}
+
+function displayInfo3() {
+  document.getElementById("chibb-desc").style.display="none" ;
+  document.getElementById("set-piece-desc").style.display="none" ;
+  document.getElementById("pie-lot-desc").style.display="block";
+
+  document.getElementById("chibb-title").style.color="lightslategrey" ;
+  document.getElementById("set-piece-title").style.color="lightslategrey" ;
+  document.getElementById("pie-lot-title").style.color="#fff";}
+
+</script>
     </head>
-    <body class="page">
+    <body>
 
         <div class="load-section">
+			<img src="assets/profile-picture.jpg" alt="Murray Buchanan" class="profile-pic" style="display:none;">
             <h1>Murray Buchanan</h1>
+			<h3>Flutter App Developer</h3>
 			<div class="link-section">
 				<a href="mailto:contact@murrayb.com"><img src="assets/Icons/email.svg" alt="Email"></a>
-				<a href="link"><img src="assets/Icons/linkedin.svg" alt="Linkedin"></a>
-				<a href="link"><img src="assets/Icons/github.svg" alt="Github"></a>
-				<a href="link"><img src="assets/Icons/instagram.svg" alt="Instagram"></a>
+				<a href="https://www.linkedin.com/in/murray-buchanan-33519220a/" target="_blank"><img src="assets/Icons/linkedin.svg" alt="Linkedin"></a>
+				<a href="https://github.com/MurrayBuchanan" target="_blank"><img src="assets/Icons/github.svg" alt="Github"></a>
+				<a href="https://www.instagram.com/murray.c.buchanan/" target="_blank"><img src="assets/Icons/instagram.svg" alt="Instagram"></a>
 			</div>
         </div>
 
 		<div class="scroll-section">
-			<a href="#personal">Learn more</a>
+			<!-- <a href="#personal">Learn more</a> -->
 		</div>
 
-		<div class="section" id="personal">
-			<div class="row">
-				<div class="paragraph bio">
-					<h2>About me</h2>
-					<p>Hey, my name is Murray.</p>
-					<p>Currently in life, I am studying Computer Science at the University of Strathclyde.</p>
-					<p>Alongside my studies, I am tutoring and will be teaching for four months in Pennsylvania later this year.</p>
-					<p>Although, I assume because you are on this website, you will already know who I am, and I don't need to describe myself in much detail.</p>
-					<p>If you don't know me and want to know something, feel free to get in touch and ask, I am very friendly.</p>
-					<p>Here is a collection of some pretty memorable moments from last year :)</p>
-				</div>
+		
+<!-- The Timeline -->
+<h2>Experience</h2>
+<div class="primary-line"></div>
+<div class="timeline-section">
+<ul class="timeline">
+
+	<!-- Item 1 -->
+	<li>
+		<div class="direction-r">
+			<div class="flag-wrapper">
+				<span class="flag">Camp Lindenmere</span>
+				<span class="time-wrapper"><span class="time">2013 - present</span></span>
 			</div>
+			<div class="desc">My current employment. Way better than the position before!</div>
+		</div>
+	</li>
+  
+	<!-- Item 2 -->
+	<li>
+		<div class="direction-l">
+			<div class="flag-wrapper">
+				<span class="flag">JPMorgan Chase & Co</span>
+				<span class="time-wrapper"><span class="time">2011 - 2013</span></span>
+			</div>
+			<div class="desc">My first employer. All the stuff I've learned and projects I've been working on.</div>
+		</div>
+	</li>
+
+	<!-- Item 3 -->
+	<li>
+		<div class="direction-r">
+			<div class="flag-wrapper">
+				<span class="flag">Direct Distribution</span>
+				<span class="time-wrapper"><span class="time">2008 - 2011</span></span>
+			</div>
+			<div class="desc">A description of all the lectures and courses I have taken and my final degree?</div>
+		</div>
+	</li>
+  
+</ul>
+</div>
+		</div>
+		
+		<h2>Education</h2>
+		<div class="primary-line"></div>
+		<div class="section" id="education">
+
+			<h4>University of Strathclyde</h4>
+				<h3>2022-2027</h3>
+			<p><strong>Masters of Engineering:</strong> Computer Science</p>
+
+			<div class="secondary-line"></div>
+			<h4>Jordanhill School</h4>
+			<h3>2022-2027</h3>
+			<p><strong>Advanced Higher:</strong> Computer Science, Mathematics and CfE Leadership </p>
+			<p><strong>Higher:</strong> Computer Science, Mathematics, Physics, English, Graphic Communication and Business Management</p>
 		</div>
 
-		<div class="section" id="work" >
+		<h2>Projects</h2>
+		<div class="primary-line"></div>
+		<div class="section" id="work">
 			<div class="paragraph">
-				<h3>Active Projects</h3>
-				<h2>chibb</h2>
-				<p>Chibb is a 2D iOS arcade game that puts players in the role of a fearless balloon pilot in a world threatened by falling asteroids and comets. Inspired by the classic gameplay of Space Invaders, Chibb challenges players to maneuver their balloon across the screen, dodging falling obstacles. With colorful graphics, challenging levels, and intuitive touch controls, Chibb is the perfect game for casual gamers looking for a quick and entertaining mobile gaming experience. <a href="chibb.html" class="green">See preview</a></p>
-				
-				<div class="line"></div>
-				
-				<h2>set piece</h2>
-				<p>This project is a secret, I cannot wait for you to see it in July 2024. <a href="#" class="red">No preview</a></p> 
+				<span id="chibb-title"><a onClick="displayInfo1()">chibb</a></span>
+				<span id="set-piece-title"><a onClick="displayInfo2()">set piece</a></span>
+				<span id="pie-lot-title"><a onClick="displayInfo3()">pie-lot</a></span>
+					
+				<div id="chibb-desc">
+					<h2>Chibb</h2>
+					<h3>July 2022-2020</h3>
+					<p>Chibb is a 2D iOS arcade game that puts players in the role of a fearless balloon pilot in a world threatened by falling asteroids and comets. Inspired by the classic gameplay of Space Invaders, Chibb challenges players to maneuver their balloon across the screen, dodging falling obstacles. With colorful graphics, challenging levels, and intuitive touch controls, Chibb is the perfect game for casual gamers looking for a quick and entertaining mobile gaming experience. <a href="chibb.html" class="green">See preview</a></p>
+				</div>
+				<div id="set-piece-desc" style="display: none;">
+					<h2>Set Piece</h2>
+					<h3>July 2022-2020</h3>
+					<p>This project is a secret, I cannot wait for you to see it in July 2024. <a href="#" class="red">No preview</a></p> 
+				</div>
 
-				<div class="line"></div>
-
-				<h2>pie-lot</h2>
-				<p>Pie-lot is a mobile app designed for iOS and Android to allow you to create a drone as an engineering project or as a fun hobby. Using my instructions you can control your drone using my App with the flexibility to customise your drone in the way that suits you. This project was inspired by my experience using the DJI Drone Controller, where I found it a great user-experience and thought it would be great to have for all or more specifically custom built drones. <a href="drone.html" class="green">See preview</a></p>
-				
+				<div id="pie-lot-desc" style="display: none;">
+					<h2>pie-lot</h2>
+					<h3>July 2022-2020</h3>
+					<p>Pie-lot is a mobile app designed for iOS and Android to allow you to create a drone as an engineering project or as a fun hobby. Using my instructions you can control your drone using my App with the flexibility to customise your drone in the way that suits you. This project was inspired by my experience using the DJI Drone Controller, where I found it a great user-experience and thought it would be great to have for all or more specifically custom built drones. <a href="drone.html" class="green">See preview</a></p>
+				</div>			
 			</div>
+		</div>
+
 			<div class="paragraph"> 
 				<h3>Next in Queue</h3>
 				<div class="sub-section">
@@ -105,6 +220,23 @@
 					<p>Looking for a reliable, high-quality and affordable website, application or other software. To get in touch, just send me an email at <a href="mailto:business@murrayb.com?subject=Business Message&body=Hey%20Murray%2C%0D%0A%0D%0ASent%20from%20www.murrayb.com" class="blue">business@murrayb.com</a>.</p>
 				</div>
 			</div>
+		
+		</div>
+
+		<h2>Volunteering</h2>
+		<div class="primary-line"></div>
+		<div class="section" id="volunteering">
+			
+			<h4><img src="assets/Icons/strathclyde.png" width="20" height="30">Head of Competitions and Challenges of Google Developer Student Club</h4>
+				<h3>Mar 2024 - Present</h3>
+			<p>I organise competitions and LeetCode/HackerRank challenge events for the Google Developer Student Club for the University of Glasgow and the University of Strathclyde.</p>
+
+			<div class="secondary-line"></div>
+
+			<h4><img src="assets/Icons/jordanhill.png" width="20" height="30"> Jordanhill School</h4>
+			<h3>2022-2027</h3>
+			<p><strong>Advanced Higher:</strong> Computer Science, Mathematics and CfE Leadership </p>
+			<p><strong>Higher:</strong> Computer Science, Mathematics, Physics, English, Graphic Communication and Business Management</p>
 		</div>
 
 		<div class="footer">
