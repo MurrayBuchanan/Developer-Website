@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You are lost!</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/ico">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: #020408;
+            color: #fff;
+            margin: 2em;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .typewriter {
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(start, end), blink-caret 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #fff; }
+        }
+        .terminal {
+            border: none;
+        }
+        .output, .input-line {
+            border: none;
+        }
+        .prompt {
+            color: #438440;
+        }
+        .cmdline {
+            border: none;
+            outline: none;
+            background: transparent;
+            color: #fafafa;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 16px;
+            width: 100%;
+        }
+        .command {
+            display: inline-block;
+            width: 150px; /* Adjust this value to control the spacing */
+        }
+
+        .spacer {
+            display: inline-block;
+            width: 20px; /* Adjust this value to control the spacing */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="output typewriter">
+            <p class="typewriter output-text">M C BUCHANAN<br>Type "help" for help.</p>
+        </div>
+        <div class="input-line typewriter">
+            <span class="typewriter prompt">$</span>
+            <input class="cmdline typewriter" autofocus />
+        </div>
+    </div>
+    <script>
+        $(function() {
+            let commands;
+
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                commands = {
+                    'help': 'Options: \nls \nopen \nwhois \nclear \nexit',
+                    'ls': ['index.html', 'profile.html', 'connect.html'],
+                    'open': 'Open a file',
+                    'whois': 'Take you to profile.html',
+                    'clear': 'Clear the terminal',
+                    'exit': 'Close the tab'
+                };
+            } else {
+                commands = {
+                    'help': 'Options: \nls Displays all file names \nopen Opens a file \nwhois Info for the domain \nclear Clears command history \nexit End the session',
+                    'ls': ['index.html', 'profile.html', 'connect.html'],
+                    'open': 'Open a file',
+                    'whois': 'Take you to profile.html',
+                    'clear': 'Clear the terminal',
+                    'exit': 'Close the tab'
+                };
+            }
+
+            const commandHistory = [];
+            let commandHistoryIndex = -1;
+
+            function showPrompt() {
+                $('.output').append('<p class="typewriter output-text">$ ' + $('.cmdline').val() + '</p>');
+            }
+
+            function listFiles() {
+                const files = commands['ls'];
+                for (const file of files) {
+                    showResponse(file);
+                }
+            }
+
+            function openFile(filename) {
+                if (filename === 'connect.html') {
+                    window.open('http://www.linkedin.com/in/murray-buchanan-33519220a', '_blank');
+                    return;
+                }
+
+                const files = commands['ls'];
+                if (files.includes(filename)) {
+                    window.open(filename, '_blank');
+                } else {
+                    showResponse('File not found.');
+                }
+            }
+
+            function whoisDomain(domain) {
+                window.open('profile.html', '_blank');
+            }
+
+            function clearTerminal() {
+                const linesToKeep = [
+                    'M C BUCHANAN',
+                ];
+
+                const outputDiv = $('.output');
+
+                outputDiv.children('.output-text').each(function() {
+                    const text = $(this).text();
+                    if (!linesToKeep.includes(text)) {
+                        $(this).remove();
+                    }
+                });
+            }
+
+            function exitTerminal() {
+                window.close();
+            }
+
+            function processCommand(input) {
+                commandHistory.unshift(input);
+                commandHistoryIndex = -1;
+
+                const parts = input.split(' ');
+                const command = parts[0].toLowerCase(); // Convert command to lowercase
+                const args = parts.slice(1).join(' ');
+
+                switch (command) {
+                    case 'help':
+                        showResponse(commands['help']);
+                        break;
+                    case 'ls':
+                        listFiles();
+                        break;
+                    case 'open':
+                        openFile(args);
+                        break;
+                    case 'whois':
+                        whoisDomain(args);
+                        break;
+                    case 'clear':
+                        clearTerminal();
+                        break;
+                    case 'exit':
+                        exitTerminal();
+                        break;
+                    default:
+                        showResponse('Unknown command. Type "help" for help.');
+                }
+            }
+
+            function showResponse(response) {
+                const lines = response.split('\n'); 
+                for (const line of lines) {
+                    const index = line.indexOf(' '); // Find the first space
+                    const command = (index !== -1) ? line.slice(0, index) : line; // Extract command
+                    const description = (index !== -1) ? line.slice(index + 1) : ''; // Extract description (if available)
+
+                    if (command === 'Unknown' || command === 'File') { // Handle the specific cases
+                        const outputLine = '<p class="typewriter output-text">' + line + '</p>';
+                        $('.output').append(outputLine);
+                    } else {
+                        const outputLine = '<p class="typewriter output-text"><span class="command">' + command + '</span><span class="spacer"></span>' + description + '</p>';
+                        $('.output').append(outputLine);
+                    }
+                }
+            }
+
+            $('.cmdline').on('keydown', function(e) {
+                if (e.which == 13) { // Enter key
+                    const input = $(this).val().trim();
+                    if (input) {
+                        showPrompt();
+                        processCommand(input);
+                    }
+                    $(this).val('');
+                } else if (e.which == 9) { // Tab key
+                    e.preventDefault();
+                    const partialCommand = $(this).val();
+                    const matchingCommands = Object.keys(commands).filter(cmd => cmd.startsWith(partialCommand));
+                    if (matchingCommands.length === 1) {
+                        $(this).val(matchingCommands[0]);
+                    }
+                } else if (e.which == 38) { // Up arrow
+                    e.preventDefault();
+                    if (commandHistoryIndex < commandHistory.length - 1) {
+                        commandHistoryIndex++;
+                        $(this).val(commandHistory[commandHistoryIndex]);
+                    }
+                } else if (e.which == 40) { // Down arrow
+                    e.preventDefault();
+                    if (commandHistoryIndex >= 0) {
+                        commandHistoryIndex--;
+                        if (commandHistoryIndex >= 0) {
+                            $(this).val(commandHistory[commandHistoryIndex]);
+                        } else {
+                            $(this).val('');
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
