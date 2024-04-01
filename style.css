@@ -56,10 +56,25 @@ h3 {
 }
 
 .link-section img {
-	width: 30px;
-	height: 30px;
+	width: 50px;
+	height: 50px;
+	margin: 0 1em 0 1em;
+	background-color: #252A2F;
+	padding: 0.5em
 }
 
+.link-section img:hover {
+	opacity: 0.8;
+}
+
+.link-section a img {
+	transition: transform 0.05s ease; 
+	transform-origin: center; 
+  }
+  
+  .link-section a:hover img {
+	transform: scale(1.1);
+  }
 
 body, p  {
 	font-weight: 300;
