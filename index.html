@@ -59,16 +59,6 @@ img.style.transform = 'scale(1)'; // Return to the original size
 });
 });
 
-document.getElementById('checkbox').addEventListener('change', function() {
-    if(this.checked) {
-        document.body.classList.add("dark-mode");
-        document.body.classList.remove("light-mode");
-    } else {
-        document.body.classList.add("light-mode");
-        document.body.classList.remove("dark-mode");
-    }
-});
-
 function displayInfo1() {
   document.getElementById("chibb-desc").style.display="block" ;
   document.getElementById("set-piece-desc").style.display="none" ;
@@ -102,9 +92,10 @@ function displayInfo3() {
 
         <div class="load-section">
 			<img src="assets/profile-picture.jpg" alt="Murray Buchanan" class="profile-pic" style="display:none;">
-            <h1>Murray Buchanan</h1>
 			<h3>Designer and Developer</h3>
+            <h1>Murray Buchanan</h1>
 			<div class="link-section">
+				<!-- Each link colour should be hovered -related to actual company colour -->
 				<a href="mailto:contact@murrayb.com"><img src="assets/Icons/email.svg" alt="Email"></a>
 				<a href="https://www.linkedin.com/in/murray-buchanan-33519220a/" target="_blank"><img src="assets/Icons/linkedin.svg" alt="Linkedin"></a>
 				<a href="https://github.com/MurrayBuchanan" target="_blank"><img src="assets/Icons/github.svg" alt="Github"></a>
@@ -113,13 +104,15 @@ function displayInfo3() {
         </div>
 
 		<div class="scroll-section">
-			<!-- <a href="#personal">Learn more</a> -->
+			<a href="#personal">Learn more<br>^</a> 
+			<!-- Make icon -->
 		</div>
 
 		
 <!-- The Timeline -->
 <h2>Experience</h2>
-<div class="secondary-line"></div>
+<div class="primary-line"></div>
+
 <div class="timeline-section">
 <ul class="timeline">
 
@@ -162,6 +155,7 @@ function displayInfo3() {
 		
 		<h2>Education</h2>
 		<div class="primary-line"></div>
+
 		<div class="section" id="education">
 
 			<h4>University of Strathclyde</h4>
@@ -181,7 +175,10 @@ function displayInfo3() {
 			<div class="paragraph">
 				<span id="chibb-title"><a onClick="displayInfo1()">chibb</a></span>
 				<span id="set-piece-title"><a onClick="displayInfo2()">set piece</a></span>
-				<span id="pie-lot-title"><a onClick="displayInfo3()">pie-lot</a></span>
+				<span ><a id="pie-lot-title" onClick="displayInfo3()">pie-lot</a></span>
+				<span id="data-scraper-title"><a onClick="displayInfo4()">Data Scraper</a></span>
+				<span id="tale-of-two-title"><a onClick="displayInfo5()">Tale of Two</a></span>
+				<span ><a id="bespoke-title" onClick="displayInfo6()">Bespoke Apps Ltd</a></span>
 					
 				<div id="chibb-desc">
 					<h2>Chibb</h2>
@@ -198,33 +195,32 @@ function displayInfo3() {
 					<h2>pie-lot</h2>
 					<h3>July 2022-2020</h3>
 					<p>Pie-lot is a mobile app designed for iOS and Android to allow you to create a drone as an engineering project or as a fun hobby. Using my instructions you can control your drone using my App with the flexibility to customise your drone in the way that suits you. This project was inspired by my experience using the DJI Drone Controller, where I found it a great user-experience and thought it would be great to have for all or more specifically custom built drones. <a href="drone.html" class="green">See preview</a></p>
-				</div>			
+				</div>	
+				
+				<div id="tale-of-two-desc" style="display: none;">
+					<h2>Tale of Two</h2>
+					<h3>July 2022-2020</h3>
+					<p>Pie-lot is a mobile app designed for iOS and Android to allow you to create a drone as an engineering project or as a fun hobby. Using my instructions you can control your drone using my App with the flexibility to customise your drone in the way that suits you. This project was inspired by my experience using the DJI Drone Controller, where I found it a great user-experience and thought it would be great to have for all or more specifically custom built drones. <a href="drone.html" class="green">See preview</a></p>
+				</div>		
+
+				<div id="data-scraper-desc" style="display: none;">
+					<h2>Data Scraper</h2>
+					<h3>July 2022-2020</h3>
+					<p>Pie-lot is a mobile app designed for iOS and Android to allow you to create a drone as an engineering project or as a fun hobby. Using my instructions you can control your drone using my App with the flexibility to customise your drone in the way that suits you. This project was inspired by my experience using the DJI Drone Controller, where I found it a great user-experience and thought it would be great to have for all or more specifically custom built drones. <a href="drone.html" class="green">See preview</a></p>
+				</div>		
+
+				<div id="bespoke-desc" style="display: none;">
+					<h2>Bespoke Apps Ltd/h2>
+					<h3>July 2022-2020</h3>
+					<p>Pie-lot is a mobile app designed for iOS and Android to allow you to create a drone as an engineering project or as a fun hobby. Using my instructions you can control your drone using my App with the flexibility to customise your drone in the way that suits you. This project was inspired by my experience using the DJI Drone Controller, where I found it a great user-experience and thought it would be great to have for all or more specifically custom built drones. <a href="drone.html" class="green">See preview</a></p>
+				</div>		
 			</div>
 		</div>
-
-			<div class="paragraph"> 
-				<h3>Next in Queue</h3>
-				<div class="sub-section">
-					<p>Tale of Two -> Unity Game</p>
-				</div>
-				<div class="sub-section">
-					<p>Private Client -> Data Scraping</p>
-				</div>
-				<div class="sub-section">
-					<p>Bespoke Apps Ltd -> Web Application</p>
-				</div>
-			</div>
-			<div class="paragraph">
-				<h3>Need Assistance?</h3>
-				<div class="sub-section">
-					<p>Looking for a reliable, high-quality and affordable website, application or other software. To get in touch, just send me an email at <a href="mailto:business@murrayb.com?subject=Business Message&body=Hey%20Murray%2C%0D%0A%0D%0ASent%20from%20www.murrayb.com" class="blue">business@murrayb.com</a>.</p>
-				</div>
-			</div>
-		
 		</div>
 
 		<h2>Volunteering</h2>
 		<div class="primary-line"></div>
+
 		<div class="section" id="volunteering">
 			
 			<h4><img src="assets/Icons/strathclyde.png" width="20" height="30">Head of Competitions and Challenges of Google Developer Student Club</h4>
@@ -237,6 +233,14 @@ function displayInfo3() {
 			<h3>2022-2027</h3>
 			<p><strong>Advanced Higher:</strong> Computer Science, Mathematics and CfE Leadership </p>
 			<p><strong>Higher:</strong> Computer Science, Mathematics, Physics, English, Graphic Communication and Business Management</p>
+		</div>
+
+		<h2>Contact</h2>
+		<div class="primary-line"></div>
+			<div class="section">
+				<p>Looking for a reliable, high-quality and affordable website, application or other software. To get in touch, just send me an email at <a href="mailto:business@murrayb.com?subject=Business Message&body=Hey%20Murray%2C%0D%0A%0D%0ASent%20from%20www.murrayb.com" class="blue">business@murrayb.com</a>.</p>
+				<button><a href="#">Email</a></button>
+			</div>
 		</div>
 
 		<div class="footer">
